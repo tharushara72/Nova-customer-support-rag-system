@@ -77,7 +77,7 @@ User Query
 | Stage | Model Type | Speed | Accuracy | Why |
 |---|---|---|---|---|
 | FAISS search | Bi-encoder | ⚡ Very fast | Good | Pre-compute doc embeddings, query only at runtime |
-| Cross-encoder reranker | Cross-encoder | Slower | Much better | Sees query + doc together, full attention |
+| Cross-encoder reranker | Cross-encoder | Slower | Much better | Sees query + doc together, full attention,(Enhancing precision)
 
 A bi-encoder encodes the query and document **separately**, making it fast but slightly imprecise. A cross-encoder sees the query and document **together** as one input, which gives it full attention over both — much more accurate, but too slow to run over thousands of documents. The solution: use bi-encoder to retrieve top-10 quickly, then cross-encoder to rerank precisely to top-3. This is called **retrieve broadly → rank precisely**.
 
